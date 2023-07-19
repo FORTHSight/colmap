@@ -31,9 +31,11 @@ RUN apt-get update && apt-get install -y \
     libceres-dev
 
 # Build and install COLMAP.
-RUN git clone https://github.com/colmap/colmap.git
+# add parent folder to colmap dir
+COPY . colmap
+# RUN git clone https://github.com/colmap/colmap.git
 RUN cd colmap && \
-    git reset --hard ${COLMAP_VERSION} && \
+    # git reset --hard ${COLMAP_VERSION} && \
     mkdir build && \
     cd build && \
     cmake .. -GNinja -DCMAKE_CUDA_ARCHITECTURES=${CUDA_ARCHITECTURES} && \

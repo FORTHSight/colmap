@@ -1,0 +1,1 @@
+docker build -f docker/Dockerfile -t my_colmap --build-arg CUDA_ARCHITECTURES=75 .

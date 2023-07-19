@@ -488,9 +488,11 @@ int RunPointTriangulatorImpl(
     }
   }
 
-  PrintHeading1("Extracting colors");
-  reconstruction->ExtractColorsForAllImages(image_path);
-
+  if (mapper_options.extract_colors) {
+    PrintHeading1("Extracting colors");
+    reconstruction->ExtractColorsForAllImages(image_path);
+  }
+  
   mapper.EndReconstruction(/*discard=*/false);
 
   reconstruction->Write(output_path);
